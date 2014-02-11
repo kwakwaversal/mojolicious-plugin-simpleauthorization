@@ -267,7 +267,11 @@ Register plugin in L<Mojolicious> application.
 Contributions welcome, though this plugin is pretty basic. I currently only
 accept GitHub pull requests.
 
+=over
+
 =item * GitHub: L<https://github.com/kwakwaversal/Mojolicious-Plugin-SimpleAuthorization>
+
+=back
 
 =head1 AUTHOR
 
