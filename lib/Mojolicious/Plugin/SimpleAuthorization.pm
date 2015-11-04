@@ -96,12 +96,12 @@ Mojolicious::Plugin::SimpleAuthorization - Simple role-based authorization
     my $r = $self->routes;
     $r->get('/')->to(cb => sub { shift->render(text => "I am public. Hi.") });
 
-    # Add authentication bridge (which populates stash with the user/roles)
+    # Add authentication under (which populates stash with the user/roles)
     #
-    # In your bridge, set the user and user's roles C<HASHREF> every request.
+    # In your under, set the user and user's roles C<HASHREF> every request.
     # The user can contain any arbitrary data. Roles should contain key/value
     # pairs, where allocated roles evaluate to true.
-    my $auth = $r->bridge->to(
+    my $auth = $r->under->to(
       cb => sub {
         my $self = shift;
 
@@ -137,7 +137,7 @@ Mojolicious::Plugin::SimpleAuthorization - Simple role-based authorization
 
 =head1 DESCRIPTION
 
-L<Mojolicious::Plugin::SimpleAuthorization> is a simple role based authorization
+L<Mojolicious::Plugin::SimpleAuthorization> is a simple role-based authorization
 plugin for L<Mojolicious>.
 
 It attempts to keep a sane control flow by not croaking or dying if the user
@@ -172,7 +172,7 @@ If assert_user_roles fails to authorize, this code ref is called.
   # Mojolicious::Lite
   plugin SimpleAuthorization => {roles => 'auth_roles'};
 
-  # In your bridge or controller
+  # In your under or controller
   $self->stash(auth_roles => {'user.delete' => 1, 'user.search' => 1});
 
 Name of stash value which holds all the roles for the current user. Must be a
@@ -203,7 +203,7 @@ C<superuser> CODE example performs an equivalent evaluation.
   # Mojolicious::Lite
   plugin SimpleAuthorization => {user => 'auth_user'};
 
-  # In your bridge or controller
+  # In your under or controller
   $self->stash(auth_user => {username => 'paul.williams', administrator => 0});
 
 Name of stash value which holds the user's information. Must be a C<HASHREF>.
@@ -269,23 +269,23 @@ accept GitHub pull requests.
 
 =over
 
-=item * GitHub: L<https://github.com/kwakwaversal/Mojolicious-Plugin-SimpleAuthorization>
+=item * GitHub: L<https://github.com/kwakwaversal/mojolicious-plugin-simpleauthorization>
 
 =back
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2014-2015, Paul Williams.
+
+This program is free software, you can redistribute it and/or modify it under
+the terms of the Artistic License version 2.0.
 
 =head1 AUTHOR
 
 Paul Williams <kwakwa@cpan.org>
 
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2014, Paul Williams.
-
-This program is free software, you can redistribute it and/or modify it under
-the terms of the Artistic License version 2.0.
-
 =head1 SEE ALSO
 
-L<Mojolicious>, L<Mojolicious::Guides>, L<http://mojolicio.us>.
+L<Mojolicious>, L<Mojolicious::Plugin::Authorization>.
 
 =cut
