@@ -1,5 +1,4 @@
 # Mojolicious::Plugin::SimpleAuthorization [![Build Status](https://travis-ci.org/kwakwaversal/mojolicious-plugin-simpleauthorization.svg?branch=master)](https://travis-ci.org/kwakwaversal/mojolicious-plugin-restify)
-========================================
 
 Simple role-based authorization for the [Mojolicious](http://mojolicio.us) web
 framework
